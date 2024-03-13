@@ -20,7 +20,7 @@ db.on("error", (err) => {
   console.error("MongoDB connection error:", err);
 });
 db.once('open', () => {
-    console.log('Connected to MongoDB');
+    console.log('App Connected to MongoDB');
   });
 
 // Include the User model
