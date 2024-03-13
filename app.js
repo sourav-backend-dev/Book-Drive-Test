@@ -23,13 +23,16 @@ db.once('open', () => {
     console.log('Connected to MongoDB');
   });
 
+// Include the User model
+const User = require("./models/users");
+// Include the Signup model
+const Signup = require("./models/signup");
+
 // listernig router
 app.listen(4000, () => {
   console.log(`Server is running on http://localhost:4000`);
 });
 
-// Include the User model
-const User = require("./models/users");
 
 // get routes
 app.get("/", (req, res) => {
@@ -48,12 +51,23 @@ app.get("/Login", (req, res) => {
   res.render("login");
 });
 
+app.get("/SignUp", (req, res) => {
+  res.render("Signup");
+});
+
 // post routes
 app.post('/G2', async(req, res)=>{
     const data = new User(req.body)
     await data.save();
     res.render('G');
   });
+
+app.post('/Signup', async(req, res)=>{
+  const data = new Signup(req.body)
+  await data.save();
+  res.render('Login');
+});
+
 
 app.post("/getUser", async (req, res) => {
   const licenseNumber = req.body.lnumber;
