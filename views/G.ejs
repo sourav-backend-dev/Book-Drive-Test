@@ -1,0 +1,98 @@
+<!-- Header section  -->
+<%- include('./partials/header.ejs') %>
+    <!-- Main Content-->
+    <!-- Page Header-->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Login Page</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="getUser" method="POST">
+                            <div class="form-group">
+                                <label for="lnumber">License Number</label>
+                                <input type="text" name="lnumber" class="form-control my-2"
+                                    placeholder="Enter License Number">
+                            </div>
+                            <button type="submit" name="login_btn" class="btn btn-primary my-4">Submit</button>
+                        </form>
+
+                        <% if (typeof message !=='undefined' ) { %>
+                            <p class="text-danger">
+                                <%= message %>
+                            </p>
+                            <% if (typeof backLink !=='undefined' ) { %>
+                                <a href="<%= backLink %>">Go back</a>
+                                <% } %>
+                                    <% } else { %>
+                                        <% if (typeof user !=='undefined' ) { %>
+                                            <p>
+                                                <strong>Name:</strong>
+                                                <%= user.firstname %>
+                                                <%= user.lastname %>
+                                            </p>
+                                            <p><strong>License Number:</strong>
+                                                <%= user.licenseNo %>
+                                            </p>
+                                            <p><strong>Age:</strong>
+                                                <%= user.age %>
+                                            </p>
+                                            <p><strong>Car Information:</strong></p>
+                                            <p><strong>Make:</strong>
+                                                <%= user.carDetails.make %>
+                                            </p>
+                                            <p><strong>Model:</strong>
+                                                <%= user.carDetails.model %>
+                                            </p>
+                                            <p><strong>Year:</strong>
+                                                <%= user.carDetails.year %>
+                                            </p>
+                                            <p><strong>Plate Number:</strong>
+                                                <%= user.carDetails.platno %>
+                                            </p>
+
+                                            <!-- Form to update car information -->
+                                            <form action="/updateCarInfo" method="POST">
+                                                <!-- Hidden input to send license number to the server -->
+                                                <input type="hidden" name="licenseNumber"
+                                                    value="<%= user.licenseNo %>" />
+                                                <div class="form-group my-3">
+                                                    <label for="make">Car Make</label>
+                                                    <input type="text" name="make" class="form-control"
+                                                        placeholder="Enter Car Make" />
+                                                </div>
+                                                <div class="form-group my-3">
+                                                    <label for="model">Car Model</label>
+                                                    <input type="text" name="model" class="form-control"
+                                                        placeholder="Enter Car Model" />
+                                                </div>
+                                                <div class="form-group my-3">
+                                                    <label for="year">Car Year</label>
+                                                    <input type="number" name="year" class="form-control"
+                                                        placeholder="Enter Car Year" />
+                                                </div>
+                                                <div class="form-group my-3">
+                                                    <label for="plateNumber">Car Plate Number</label>
+                                                    <input type="text" name="plateNumber" class="form-control"
+                                                        placeholder="Enter Car Plate Number" />
+                                                </div>
+                                                <button type="submit" name="submitBtn" class="btn btn-primary my-3">
+                                                    Update Car Information
+                                                </button>
+                                            </form>
+                                <% } else { %>
+                                <p>No user Registered with this Number</p>
+                            <% } %>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- footer section  -->
+    <%- include('./partials/footer.ejs') %>

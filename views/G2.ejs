@@ -1,0 +1,79 @@
+<!-- Header section  -->
+<%- include('./partials/header.ejs') %>
+<!-- Main Content-->
+<!-- Page Header-->
+
+<!-- main section  -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Personal Information</h4>
+                </div>
+                <div class="card-body">
+                    <form action="G2" method="POST">
+                        <div class="form-group my-3">
+                            <label for="firstName">First Name</label>
+                            <input type="text" name="firstname" class="form-control"
+                                placeholder="Enter Your First Name" required>
+                        </div>
+                        <div class="form-group my-3">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" name="lastname" class="form-control"
+                                placeholder="Enter Your Last Name" required>
+                        </div>
+                        <div class="form-group my-3">
+                            <label for="licenseNumber">License Number (8 characters alpha-numeric)</label>
+                            <input type="text" name="licenseNo" class="form-control" pattern="[A-Za-z0-9]{8}"
+                                placeholder="Enter License Number" required>
+                        </div>
+                        <div class="form-group my-3">
+                            <label for="age">Age</label>
+                            <input type="number" name="age" class="form-control" placeholder="Enter Your Age"
+                                required>
+                        </div>
+                        <div class="form-group my-3">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" name="dob" class="form-control" required>
+                        </div>
+                </div>
+                <div class="card-header">
+                    <h4>Car Information</h4>
+                </div>
+                <div class="card-body">
+                    <div class="form-group my-3">
+                        <label for="make">Car Make</label>
+                        <input type="text" name="carDetails.make" class="form-control" placeholder="Enter Car Make"
+                            required>
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="model">Car Model</label>
+                        <input type="text" name="carDetails.model" class="form-control"
+                            placeholder="Enter Car Model" required>
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="year">Car Year</label>
+                        <input type="number" name="carDetails.year" class="form-control"
+                            placeholder="Enter Car Year" required>
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="plateNumber">Car Plate Number</label>
+                        <input type="text" name="carDetails.platno" class="form-control"
+                            placeholder="Enter Car Plate Number" required>
+                    </div>
+                    <button type="submit" name="submitBtn" class="btn btn-primary my-3">Submit Request</button>
+                </div>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+<!-- footer section  -->
+<%- include('./partials/footer.ejs') %>
+        
