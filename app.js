@@ -80,6 +80,18 @@ app.post("/getUser", async (req, res) => {
   }
 });
 
+app.post("/Login", async (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  const register = await Signup.findOne({ email: email , password : password});
+
+  if (!register) {
+    res.render("Login", { message: "No User Found", backLink: "/Signup" });
+  } else {
+    res.render("dashboard", { register });
+  }
+});
+
 app.post("/updateCarInfo", async (req, res) => {
   const licenseNumber = req.body.licenseNumber;
 

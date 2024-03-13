@@ -10,18 +10,34 @@
                     <h4>Login Page</h4>
                 </div>
                 <div class="card-body">
-                    <form action="#" method="POST">
+                    <form action="Login" method="POST">
                         <div class="form-group">
                             <label for="email">Email address</label>
-                            <input type="email" name="email" class="form-control my-2" placeholder="Work Under Construction" disabled>
+                            <input type="email" name="email" class="form-control my-2" placeholder="Work Under Construction" >
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" name="password" class="form-control my-2" placeholder="Work Under Construction" disabled>
+                            <input type="password" name="password" class="form-control my-2" placeholder="Work Under Construction" >
                         </div>
                         <button type="submit" name="login_btn" class="btn btn-primary mt-4">Submit</button>
                     </form>
                     <p>Don't have account ? <a href="Signup">Sign Up!</a></p>
+                    <% if (typeof message !=='undefined' ) { %>
+                        <p class="text-danger">
+                            <%= message %>
+                        </p>
+                        <% if (typeof backLink !=='undefined' ) { %>
+                            <a href="<%= backLink %>">Go back</a>
+                            <% } %>
+                                <% } else { %>
+                                    <% if (typeof register !=='undefined' ) { %>
+                                        <p>
+                                            User Registered
+                                        </p>
+                            <% } else { %>
+                            <p>No user Registered with this Number</p>
+                        <% } %>
+                    <% } %>
                 </div>
             </div>
         </div>
